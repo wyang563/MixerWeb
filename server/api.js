@@ -6,12 +6,13 @@
 | This file defines the routes for your server.
 |
 */
-
+import User from "./models/user.js";
+import NewUser from "../client/src/pages/SignUp.js"
 const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
-
+let UserData = new User({name: {NewUser.name}}, password: {NewUser.password}, googleid: {NewUser.googleid}); // NewUser is from sign-up
 // import authentication library
 const auth = require("./auth");
 
@@ -34,7 +35,8 @@ router.get("/whoami", (req, res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  if (req.user) socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+  if (req.user)
+    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
 
