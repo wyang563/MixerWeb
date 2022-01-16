@@ -7,12 +7,11 @@
 |
 */
 import User from "./models/user.js";
-// import NewUser from "../client/src/pages/SignUp.js"
+import NewSignUp from "../client/src/pages/SignUp.js";
 const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
-// let UserData = new User({name: {NewUser.name}}, password: {NewUser.password}, googleid: {NewUser.googleid}); // NewUser is from sign-up
 // import authentication library
 const auth = require("./auth");
 
@@ -51,7 +50,12 @@ router.get("/users", (req, res) => {
 
 // add another user
 router.post("/user", (req, res) => {
-  const newUser = new User({ name: "andrew", password: "pwrd", googleid: "69" });
+  const newUser = new User({
+    Name: NewSignUp.Name,
+    Username: NewSignUp.Username,
+    EmailAddress: NewSignUp.EmailAddress,
+    Password: NewSignUp.Password,
+  });
 });
 
 //save object to DB

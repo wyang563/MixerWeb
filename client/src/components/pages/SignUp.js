@@ -4,6 +4,12 @@ import "../../utilities.css";
 const UsersList = (props) => {
   const [allUsers, setAllUsers] = useState([]);
 };
+const NewSignUp = {
+  Name: "",
+  Username: "",
+  EmailAddress: "",
+  Password: "",
+};
 
 const SignUp = () => {
   return (
@@ -35,3 +41,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+export var NewSignUp;
