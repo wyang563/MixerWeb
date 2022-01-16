@@ -7,12 +7,12 @@
 |
 */
 import User from "./models/user.js";
-import NewUser from "../client/src/pages/SignUp.js"
+// import NewUser from "../client/src/pages/SignUp.js"
 const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
-let UserData = new User({name: {NewUser.name}}, password: {NewUser.password}, googleid: {NewUser.googleid}); // NewUser is from sign-up
+// let UserData = new User({name: {NewUser.name}}, password: {NewUser.password}, googleid: {NewUser.googleid}); // NewUser is from sign-up
 // import authentication library
 const auth = require("./auth");
 
@@ -44,6 +44,18 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 
+//get all users
+router.get("/users", (req, res) => {
+  User.find({}).then((users) => res.send(users));
+});
+
+// add another user
+router.post("/user", (req, res) => {
+  const newUser = new User({ name: "andrew", password: "pwrd", googleid: "69" });
+});
+
+//save object to DB
+newUser.save().then((user) => res.send(user));
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
