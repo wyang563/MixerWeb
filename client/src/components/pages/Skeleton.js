@@ -12,7 +12,7 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   const handleSignUp = () => {
     navigate("/signup");
   }
-  const handleLogin = () => {
+  const handlePageLogin = () => {
     navigate("/loginpage");
   }
 
@@ -36,7 +36,7 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
       <h1>Welcome to Mixer</h1>
       <h2>Meet new people through random conversations here!</h2>
       <button onClick={handleSignUp}>Sign Up Here</button>
-      <button onClick={handleLogin}> Login Here</button>
+      <button onClick={handlePageLogin}> Login Here</button>
 
     </>
   );

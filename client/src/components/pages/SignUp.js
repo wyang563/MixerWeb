@@ -1,7 +1,7 @@
 import React from 'react';
-import{ init } from '@emailjs/browser';
+import authenticateUser from '../authenticateUser.js';
 
-export default class FormSubmission extends React.Component {
+export default class SignUp extends React.Component {
     constructor (props){
         super(props);
         this.state = {
@@ -22,26 +22,16 @@ export default class FormSubmission extends React.Component {
     handleButtonClicked(event) {
         //checks if inputted email is an @mit.edu email
         if (!(this.state.email.includes("@mit.edu"))){
-            alert("Please input an @mit.edu email address")
+            alert("Please input an @mit.edu email address");
         }
         else{
-            const templateID = 'template_id';
-            const serviceID = 'gmail';
-            const parameters = {message_html: "penis go pee pee", from_name: "Mixer Team", reply_to: this.state.email};
-            this.sendFeedback(serviceID, templateID, parameters)
-            alert("Account confirmation email sent");
+            alert("Please confirm your email address");
+            authenticateUser(this.state.email, this.state.password, false);
         }
-
+        
         event.preventDefault();
     }
-    sendFeedback(serviceID, templateID, variables) {
-        emailjs.send(serviceID, templateID, parameters).then(function(response){
-            console.log("sucesss");
-        }, function(error) {
-            console.log("failed", error);
-        });
-        
-    }
+    
     render () {
         return (
             <div>
