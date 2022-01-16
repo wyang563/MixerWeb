@@ -3,6 +3,7 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import SignUp from "./pages/SignUp.js";
+import LoginPage from "./pages/LoginPage.js";
 
 
 import "../utilities.css";
@@ -45,6 +46,7 @@ const App = () => {
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <SignUp path="/signup"/>
+        <LoginPage path="/loginpage" />
         <NotFound default />
       </Router>
     </>

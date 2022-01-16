@@ -1,4 +1,5 @@
 import React from 'react';
+import{ init } from '@emailjs/browser';
 
 export default class FormSubmission extends React.Component {
     constructor (props){
@@ -17,9 +18,29 @@ export default class FormSubmission extends React.Component {
             [event.target.name]: value
         });
     }
+    
     handleButtonClicked(event) {
-        alert("submission completed "+ this.state.value);
+        //checks if inputted email is an @mit.edu email
+        if (!(this.state.email.includes("@mit.edu"))){
+            alert("Please input an @mit.edu email address")
+        }
+        else{
+            const templateID = 'template_id';
+            const serviceID = 'gmail';
+            const parameters = {message_html: "penis go pee pee", from_name: "Mixer Team", reply_to: this.state.email};
+            this.sendFeedback(serviceID, templateID, parameters)
+            alert("Account confirmation email sent");
+        }
+
         event.preventDefault();
+    }
+    sendFeedback(serviceID, templateID, variables) {
+        emailjs.send(serviceID, templateID, parameters).then(function(response){
+            console.log("sucesss");
+        }, function(error) {
+            console.log("failed", error);
+        });
+        
     }
     render () {
         return (
@@ -37,8 +58,8 @@ export default class FormSubmission extends React.Component {
                     <input type="email" name="email" value={this.state.email} onChange={this.handleInputChanged.bind(this)} />
                     <label> Password: </label>
                     <input type="password" name="password" value={this.state.password} onChange={this.handleInputChanged.bind(this)} />
-                    <input type="submit" value="Submit" onClick={this.handleButtonClicked()} />
                 </form>
+                <button onClick={this.handleButtonClicked.bind(this)}>Submit</button>
                 
             </div>
         )
