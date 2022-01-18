@@ -4,6 +4,8 @@ import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import SignUp from "./pages/SignUp.js";
 import LoginPage from "./pages/LoginPage.js";
+import HomePage_Signed_In from "./pages/HomePage_Signed_In.js";
+import chat from "./pages/chat.js";
 
 
 import "../utilities.css";
@@ -47,6 +49,8 @@ const App = () => {
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <SignUp path="/signup"/>
         <LoginPage path="/loginpage" />
+        <HomePage_Signed_In path="/HomePage_Signed_In"/>
+        <chat path="/chat" />
         <NotFound default />
       </Router>
     </>

@@ -1,5 +1,4 @@
 import React from "react";
-import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { navigate } from "@reach/router";
  
 import "../../utilities.css";
@@ -18,21 +17,6 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
 
   return (
     <>
-      {userId ? (
-        <GoogleLogout
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Logout"
-          onLogoutSuccess={handleLogout}
-          onFailure={(err) => console.log(err)}
-        />
-      ) : (
-        <GoogleLogin
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Login"
-          onSuccess={handleLogin}
-          onFailure={(err) => console.log(err)}
-        />
-      )}
       <h1>Welcome to Mixer</h1>
       <h2>Meet new people through random conversations here!</h2>
       <button onClick={handleSignUp}>Sign Up Here</button>

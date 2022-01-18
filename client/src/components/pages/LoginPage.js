@@ -1,10 +1,12 @@
 import React from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { navigate } from "@reach/router";
 
 export default class LoginPage extends React.Component {
     constructor (props){
         super(props);
         this.state = {
-            userName: "",
+            email: "",
             password: "",
         }
     }
@@ -17,8 +19,7 @@ export default class LoginPage extends React.Component {
     
     handleButtonClicked(event) {
         
-
-        event.preventDefault();
+        
     }
     
     render () {
@@ -26,8 +27,8 @@ export default class LoginPage extends React.Component {
             <div>
                 <h1>Login</h1>
                 <form>
-                    <label>Username</label>
-                    <input type="text" name="userName" value={this.state.userName} onChange={this.handleInputChanged.bind(this)} />
+                    <label>Email</label>
+                    <input type="text" name="email" value={this.state.email} onChange={this.handleInputChanged.bind(this)} />
                     <label> Password: </label>
                     <input type="password" name="password" value={this.state.password} onChange={this.handleInputChanged.bind(this)} />
                 </form>

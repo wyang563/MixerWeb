@@ -43,6 +43,20 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 // anything else falls to this "not found" case
+router.post("/userRegistration", (req, res) => {
+    const newUser = new User( { 
+        firstName: req.body.firstName, 
+        lastName: req.body.lastName,
+        userName: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+    } );
+    newUser.save().then((person) => {
+      console.log(person);
+      res.send({});
+    });
+})
+
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
   res.status(404).send({ msg: "API route not found" });

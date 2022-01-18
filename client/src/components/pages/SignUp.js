@@ -1,5 +1,10 @@
 import React from 'react';
 import authenticateUser from '../authenticateUser.js';
+import auth_email_link_send from '../auth_email_link_send.js';
+import actionCodeSettings from '../auth_email_link_actioncode_settings.js';
+import { getAuth, sendSignInLinkToEmail } from 'firebase/auth';
+import { post } from "../../utilities";
+
 
 export default class SignUp extends React.Component {
     constructor (props){
@@ -12,6 +17,7 @@ export default class SignUp extends React.Component {
             password: "",
         }
     }
+
     handleInputChanged(event) {
         const value = event.target.value;
         this.setState({
@@ -25,11 +31,15 @@ export default class SignUp extends React.Component {
             alert("Please input an @mit.edu email address");
         }
         else{
-            alert("Please confirm your email address");
-            authenticateUser(this.state.email, this.state.password, false);
+            const body = {
+                firstName: this.state.firstName, 
+                lastName: this.state.lastName,
+                userName: this.state.userName,
+                email: this.state.email,
+                password: this.state.password,
+            }
+            post("/api/userRegistration", body);
         }
-        
-        event.preventDefault();
     }
     
     render () {
