@@ -57,6 +57,11 @@ router.post("/userRegistration", (req, res) => {
     });
 })
 
+router.get("/chat", (req, res) => {
+  const query = { "recipient._id": "ALL_CHAT" };
+  Message.find(query).then((messages) => res.send(messages));
+});
+
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
   res.status(404).send({ msg: "API route not found" });

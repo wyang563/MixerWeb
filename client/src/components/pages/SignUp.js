@@ -2,7 +2,7 @@ import React from 'react';
 import authenticateUser from '../authenticateUser.js';
 import auth_email_link_send from '../auth_email_link_send.js';
 import actionCodeSettings from '../auth_email_link_actioncode_settings.js';
-import { getAuth, sendSignInLinkToEmail } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, sendSignInLinkToEmail } from 'firebase/auth';
 import { post } from "../../utilities";
 
 
@@ -38,7 +38,14 @@ export default class SignUp extends React.Component {
                 email: this.state.email,
                 password: this.state.password,
             }
-            post("/api/userRegistration", body);
+            try{
+                post("/api/userRegistration", body);
+                const auth = getAuth();
+                createUserWithEmailAndPassword(auth, this.state.email, this.state.password);
+            } catch(err) {
+                alert("Error occurred during sign up please try again");
+            }
+            
         }
     }
     

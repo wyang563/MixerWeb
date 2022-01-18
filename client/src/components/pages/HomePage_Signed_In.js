@@ -4,7 +4,7 @@ import { getAuth, sendSignInLinkToEmail } from 'firebase/auth';
 
 const HomePage_Signed_In = ({ firstName, lastName, email }) => {
   const handleChat = () => {
-    alert("Joining chat now");
+    navigate("/chatbook");
   }
   const handleLogout = () => {
    alert("Logging out now"); 

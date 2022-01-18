@@ -5,7 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import SignUp from "./pages/SignUp.js";
 import LoginPage from "./pages/LoginPage.js";
 import HomePage_Signed_In from "./pages/HomePage_Signed_In.js";
-import chat from "./pages/chat.js";
+import Chatbook from "./pages/chatbook.js";
 
 
 import "../utilities.css";
@@ -50,7 +50,7 @@ const App = () => {
         <SignUp path="/signup"/>
         <LoginPage path="/loginpage" />
         <HomePage_Signed_In path="/HomePage_Signed_In"/>
-        <chat path="/chat" />
+        <Chatbook path="/chatbook" />
         <NotFound default />
       </Router>
     </>
