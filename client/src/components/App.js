@@ -5,7 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import SignUp from "./pages/SignUp.js";
 import LoginPage from "./pages/LoginPage.js";
 import HomePage_Signed_In from "./pages/HomePage_Signed_In.js";
-import Chatbook from "./pages/chatbook.js";
+import Chatbook from "./pages/Chatbook.js";
 
 
 import "../utilities.css";
