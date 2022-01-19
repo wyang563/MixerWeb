@@ -4,6 +4,7 @@ import auth_email_link_send from '../auth_email_link_send.js';
 import actionCodeSettings from '../auth_email_link_actioncode_settings.js';
 import { createUserWithEmailAndPassword, getAuth, sendSignInLinkToEmail } from 'firebase/auth';
 import { post } from "../../utilities";
+import { navigate } from "@reach/router";
 
 
 export default class SignUp extends React.Component {
@@ -42,6 +43,8 @@ export default class SignUp extends React.Component {
                 post("/api/userRegistration", body);
                 const auth = getAuth();
                 createUserWithEmailAndPassword(auth, this.state.email, this.state.password);
+                navigate("/HomePage_Signed_In");
+
             } catch(err) {
                 alert("Error occurred during sign up please try again");
             }
@@ -61,7 +64,7 @@ export default class SignUp extends React.Component {
 
                     <label>Username</label>
                     <input type="text" name="userName" value={this.state.userName} onChange={this.handleInputChanged.bind(this)} />
-                    <label>Edu Email Address</label>
+                    <label>MIT Email Address</label>
                     <input type="email" name="email" value={this.state.email} onChange={this.handleInputChanged.bind(this)} />
                     <label> Password: </label>
                     <input type="password" name="password" value={this.state.password} onChange={this.handleInputChanged.bind(this)} />

@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp.js";
 import LoginPage from "./pages/LoginPage.js";
 import HomePage_Signed_In from "./pages/HomePage_Signed_In.js";
 import Chatbook from "./pages/Chatbook.js";
+import Profile from "./pages/profile.js";
 
 
 import "../utilities.css";
@@ -51,6 +52,7 @@ const App = () => {
         <LoginPage path="/loginpage" />
         <HomePage_Signed_In path="/HomePage_Signed_In"/>
         <Chatbook path="/chatbook" />
+        <Profile path="/profile" />
         <NotFound default />
       </Router>
     </>
