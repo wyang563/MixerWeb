@@ -1,4 +1,5 @@
 import React from 'react';
+import { auth } from "../firebase";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { navigate } from "@reach/router";
 import authenticateUser from '../authenticateUser';
@@ -20,8 +21,10 @@ export default class LoginPage extends React.Component {
     
     handleButtonClicked(event) {
         try{
-            const auth = getAuth();
-            signInWithEmailAndPassword(auth, this.state.email, this.state.password);
+            event.preventDefault();
+            auth.signInWithEmailAndPassword(this.state.email, this.state.password).then(cred => {
+                console.log(cred);
+            })
             navigate("/HomePage_Signed_In");
         } catch(err) {
             alert("Incorrect username or password");

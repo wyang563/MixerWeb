@@ -1,13 +1,16 @@
 import React from "react";
 import { navigate } from "@reach/router";
-import { getAuth, sendSignInLinkToEmail } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 
 const HomePage_Signed_In = ({ firstName, lastName, email }) => {
   const handleChat = () => {
     navigate("/chatbook");
   }
-  const handleLogout = () => {
-   alert("Logging out now"); 
+  const handleLogout = (event) => {
+   event.preventDefault();
+   signOut().then(() => {
+
+   })
   }
   const handleProfile = () => {
     navigate("/profile");
